@@ -87,10 +87,10 @@ values."
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
      zilongshanren
-     (chinese :packages youdao-dictionary fcitx
-              :variables chinese-enable-fcitx nil
-              chinese-enable-youdao-dict t)
-     )
+      (chinese :packages youdao-dictionary fcitx
+               :variables chinese-enable-fcitx nil
+               chinese-enable-youdao-dict t)
+      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -444,4 +444,4 @@ values."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-)
+  )
