@@ -32,7 +32,7 @@
         lua-mode
         (cc-mode :location built-in)
         ;; flycheck-clojure
-        etags-select
+        ;; etags-select
         (python :location built-in)
         (emacs-lisp :location built-in)
         ;; clojure-mode
@@ -43,7 +43,19 @@
         cider
         ;; editorconfig
         robe
-        ))
+         ))
+
+;; 自定义 package 安装地址
+(defconst zilongshanren-etags-select-packages
+  '(
+    (etags-select :location (recipe :fetcher github :repo "etags-select/etags-select.el"))
+    )
+  )
+
+(defun zilongshanren/init-etags-select ()
+  (use-package etags-select
+    :init)
+  )
 
 (defun zilongshanren-programming/post-init-robe ()
   (progn
