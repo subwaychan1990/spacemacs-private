@@ -1,4 +1,4 @@
-;;; packages.el --- subwaychan layer packages file for Spacemacs.
+;;; packages.el --- subwaychan-programming layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2018 Sylvain Benner & Contributors
 ;;
@@ -18,28 +18,20 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `subwaychan-packages'. Then, for each package PACKAGE:
+;; added to `subwaychan-programming-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `subwaychan/init-PACKAGE' to load and initialize the package.
+;;   function `subwaychan-programming/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `subwaychan/pre-init-PACKAGE' and/or
-;;   `subwaychan/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `subwaychan-programming/pre-init-PACKAGE' and/or
+;;   `subwaychan-programming/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
 
-
-
-;;;;;;;;;;;;
-;; region ;;
-;;;;;;;;;;;;
-
-
-
-(defconst subwaychan-packages
+(defconst subwaychan-programming-packages
   '()
-  "The list of Lisp packages required by the subwaychan layer.
+  "The list of Lisp packages required by the subwaychan-programming layer.
 
 Each entry is either:
 
