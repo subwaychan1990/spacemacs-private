@@ -14,7 +14,7 @@
 (defconst zilongshanren-org-packages
   '(
     (org :location built-in)
-    org-mac-link
+    ;; org-mac-link
     org-pomodoro
     deft
     (blog-admin :location (recipe
@@ -27,6 +27,21 @@
     ;; plain-org-wiki
     )
   )
+
+
+;; 自定义 package 安装地址
+(defconst zilongshanren-org-mac-link-packages
+  '(
+    (etags-select :location (recipe :fetcher github :repo "org-mode/contrib/lisp/org-mac-link.el"))
+    )
+  )
+
+(defun zilongshanren/init-etags-select ()
+  (use-package org-mac-link
+    :init)
+  )
+
+
 
 (defun zilongshanren-org/init-blog-admin ()
   (use-package blog-admin
@@ -200,7 +215,7 @@
        'org-babel-load-languages
        '((perl . t)
          (ruby . t)
-         (sh . t)
+         ;; (sh . t)
          (dot . t)
          (js . t)
          (latex .t)
