@@ -1,16 +1,18 @@
-(defvar org-agenda-dir ""
-  "gtd org files location")
+region
 
-(defvar deft-dir ""
-  "deft org files locaiton")
+;; (defvar org-agenda-dir ""
+;;   "gtd org files location")
 
-(defvar blog-admin-dir ""
-  "blog-admin files location")
+;; (defvar deft-dir ""
+;;   "deft org files locaiton")
 
-(setq-default
- org-agenda-dir "~/org-notes"
- deft-dir "~/org-notes"
- blog-admin-dir "~/zilongshanren.com")
+;; (defvar blog-admin-dir ""
+;;   "blog-admin files location")
+
+;; (setq-default
+;;  org-agenda-dir "~/org-notes"
+;;  deft-dir "~/org-notes"
+;;  blog-admin-dir "~/zilongshanren.com")
 
 ;;load sensitive data
 ;; or (like spacemacs init.el)put the above variable into it ,then the own value separated from public config
