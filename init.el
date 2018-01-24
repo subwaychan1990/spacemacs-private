@@ -33,8 +33,10 @@ values."
    '(
      ivy
      better-defaults
+     ;;搜索你的配置
      ranger
      colors
+     ;;方便地启动web服务
      prodigy
      search-engine
      graphviz
