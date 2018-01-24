@@ -375,7 +375,7 @@ values."
       (set-fontset-font (frame-parameter nil 'font)
                         charset
                         (font-spec :family "Microsoft Yahei" :size 14))))
-
+  ;;选中要复制
   (fset 'evil-visual-update-x-selection 'ignore)
 
   ;; force horizontal split window
