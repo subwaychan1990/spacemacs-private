@@ -10,9 +10,9 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers '(
-                                      zilongshanren-misc
-                                      zilongshanren-programming
-                                      zilongshanren-ui
-                                      zilongshanren-org
-                                      zilongshanren-better-defaults
+                                      subwaychan-others
+                                      subwaychan-programming
+                                      subwaychan-ui
+                                      subwaychan-org
+                                      subwaychan-better-defaults
                                       ))
