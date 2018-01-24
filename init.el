@@ -33,7 +33,7 @@ values."
    '(
      ivy
      better-defaults
-     ;;搜索你的配置
+     ;preview your files
      ranger
      colors
      ;;方便地启动web服务
@@ -64,6 +64,7 @@ values."
      (shell :variables shell-default-shell 'eshell)
      ;; docker
      latex
+     ;;搜索你的配置
      deft
      markdown
      (org :variables org-want-todo-bindings t)
