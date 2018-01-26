@@ -28,6 +28,9 @@
  '(magit-use-overlays nil)
  '(only-global-abbrevs t)
  '(org-agenda-custom-commands nil)
+ '(org-agenda-files
+   (quote
+    ("/Users/subway/org-notes/gtd.org" "/Users/subway/org-notes/journal.org" "/Users/subway/org-notes/notes.org" "/Users/subway/org-notes/snippet.org")))
  '(org-agenda-ndays 1)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
