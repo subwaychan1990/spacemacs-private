@@ -50,13 +50,13 @@
           (delete-char 1)))))
 
 
-(defun zilongshanren/load-my-layout ()
-  (interactive)
-  (persp-load-state-from-file (concat persp-save-dir "zilong")))
+;; (defun zilongshanren/load-my-layout ()
+;;   (interactive)
+;;   (persp-load-state-from-file (concat persp-save-dir "zilong")))
 
-(defun zilongshanren/save-my-layout ()
-  (interactive)
-  (persp-save-state-to-file (concat persp-save-dir "zilong")))
+;; (defun zilongshanren/save-my-layout ()
+;;   (interactive)
+;;   (persp-save-state-to-file (concat persp-save-dir "zilong")))
 
 ;; http://blog.binchen.org/posts/use-ivy-mode-to-search-bash-history.html
 ;; ;FIXME: make it work with zsh
