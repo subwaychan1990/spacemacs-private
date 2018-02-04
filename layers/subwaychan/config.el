@@ -57,8 +57,8 @@
         ;;纪念日
         ;; (holiday-fixed 1 1 "儿子生日")
         (holiday-lunar 9 7 "老婆生日(lunar)" 0)
-        (holiday-lunar 9 7 "老婆生日(fixed)" 0)
+        (holiday-fixed 10 6 "老婆生日(fixed)")
         (holiday-lunar 12 23 "我的生日(lunar)" 0)
-        (holiday-lunar 1 19 "我的生日(fixed)" 0)
+        (holiday-fixed 1 19 "我的生日(fixed)")
         ))
 (setq calendar-holidays my-holidays)  ;只显示我定制的节假日
