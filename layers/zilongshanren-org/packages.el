@@ -119,7 +119,7 @@
       ;; (add-to-list 'auto-mode-alist '("\.org\\'" . org-mode))
 
       (setq org-todo-keywords
-            (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d!/!)")
+            (quote ((sequence "TODO(t)" "STARTED(s)" "|" "DONE(d@/!)")
                     (sequence "WAITING(w@/!)" "SOMEDAY(S)" "|" "CANCELLED(c@/!)" "MEETING(m)" "PHONE(p)"))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
       ;; Org clock
@@ -131,8 +131,8 @@
       (setq org-clock-into-drawer t)
       ;; Removes clocked tasks with 0:00 duration
       (setq org-clock-out-remove-zero-time-clocks t) ;; Show the clocked-in task - if any - in the header line
+      (setq org-tags-match-list-sublevels t)
 
-      (setq org-tags-match-list-sublevels nil)
 
       (add-hook 'org-mode-hook '(lambda ()
                                   ;; keybinding for editing source code blocks
