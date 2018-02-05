@@ -147,7 +147,7 @@
   (let ((head-tags (org-get-tags-at)))
     (member current-tag head-tags)))
 
-(defun zilong/org-clock-sum-today-by-tags (timerange &optional tstart tend noinsert)
+(defun subway/org-clock-sum-today-by-tags (timerange &optional tstart tend noinsert)
   (interactive "P")
   (let* ((timerange-numeric-value (prefix-numeric-value timerange))
          (files (org-add-archive-files (org-agenda-files)))
