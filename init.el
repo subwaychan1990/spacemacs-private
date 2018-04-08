@@ -96,7 +96,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(sicp helm-projectile cal-china-x)
+   dotspacemacs-additional-packages '(sicp helm-projectile cal-china-x electric-spacing matlab-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages
@@ -360,6 +360,16 @@ values."
   (setq warning-minimum-level :error)
   ;; hack for remove purpose mode
   (setq purpose-mode nil)
+
+  ;; Matlab mode
+  (autoload 'matlab-mode "matlab" "Matlab Editing Mode" t)
+  (add-to-list
+   'auto-mode-alist
+   '("\\.m$" . matlab-mode))
+  (setq matlab-indent-function t)
+  (setq matlab-shell-command "/Applications/MATLAB_R2014b.app/bin/matlab")
+  (setq matlab-shell-command-switches (list "-nodesktop"))
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -436,9 +446,9 @@ values."
 
   ;; ;; (add-hook 'text-mode-hook 'spacemacs/toggle-spelling-checking-on)
   ;; )
-   (add-hook 'text-mode-hook 'spacemacs/toggle-spelling-checking-on)
-)
+  (add-hook 'text-mode-hook 'spacemacs/toggle-spelling-checking-on)
 
+    )
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)
 (defun dotspacemacs/emacs-custom-settings ()
