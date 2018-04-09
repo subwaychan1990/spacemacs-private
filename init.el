@@ -448,7 +448,22 @@ values."
   ;; )
   (add-hook 'text-mode-hook 'spacemacs/toggle-spelling-checking-on)
 
-    )
+  '(LaTeX-command "latex -synctex=1")
+  (require 'tex-site)
+  (add-hook 'TeX-mode-hook
+            (lambda ()
+              (add-to-list 'TeX-output-view-style
+                           '("^pdf$" "."
+                             "/Applications/Skim.app/Contents/SharedSupport/displayline -b %n %o %b")))
+            )
+  (server-start)
+
+  (add-hook 'org-mode-hook 'iimage-mode) ; enable iimage-mode
+  (add-to-list 'load-path  "~/.emacs.img/")
+  (require 'org-screenshot)
+  (global-set-key (kbd "C-p") 'org-screenshot)
+
+  )
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)
 (defun dotspacemacs/emacs-custom-settings ()
