@@ -223,7 +223,12 @@
          (emacs-lisp . t)
          (plantuml . t)
          (C . t)
-         (ditaa . t)))
+         (ditaa . t)
+         (matlab . t)
+         (octave . t)
+         )
+       )
+
 
 
       (require 'ox-md nil t)

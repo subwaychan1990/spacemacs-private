@@ -78,7 +78,7 @@
 
                  "%1 "
                  ;; the buffer name; the file name as a tool tip
-                 '(:eval (propertize "%b " 'face 'font-lock-keyword-face
+                 '(:eval (propertize "%b " 'face 'font-lock-negation-char-face
                                      'help-echo (buffer-file-name)))
 
 
@@ -293,10 +293,10 @@ This segment overrides the modeline functionality of `org-mode-line-string'."
 
     (setq-default tab-width 4)
     ;; set-buffer-file-coding-system -> utf8 to convert dos to utf8
-    ;; (setq inhibit-eol-conversion t)
-    ;; (add-hook 'prog-mode-hook 'whitespace-mode)
+    (setq inhibit-eol-conversion t)
+    (add-hook 'prog-mode-hook 'whitespace-mode)
 
-    ;; (global-whitespace-mode +1)
+    (global-whitespace-mode +1)
 
     (with-eval-after-load 'whitespace
       (progn

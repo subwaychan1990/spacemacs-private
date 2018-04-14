@@ -33,7 +33,7 @@ values."
    '(
      ivy
      better-defaults
-     ;preview your files
+                                        ;preview your files
      ranger
      colors
      ;;方便地启动web服务
@@ -71,16 +71,18 @@ values."
      gpu
      yaml
      react
-     (python :variables
-             python-test-runner '(nose pytest))
+     python
+     ;; (python :variables
+     ;;         python-test-runner '(nose pytest))
+     ipython-notebook
      ;; (ruby :variables ruby-version-manager 'chruby)
      ;; ruby-on-rails
      lua
      html
      javascript
      (typescript :variables
-                typescript-fmt-on-save nil
-                typescript-fmt-tool 'typescript-formatter)
+                 typescript-fmt-on-save nil
+                 typescript-fmt-tool 'typescript-formatter)
      emacs-lisp
      (clojure :variables clojure-enable-fancify-symbols t)
      racket
@@ -88,15 +90,15 @@ values."
             c-c++-default-mode-for-headers 'c++-mode)
      subwaychan
      zilongshanren
-      (chinese :packages youdao-dictionary fcitx
-               :variables chinese-enable-fcitx nil
-               chinese-enable-youdao-dict t)
-      )
+     (chinese :packages youdao-dictionary fcitx
+              :variables chinese-enable-fcitx nil
+              chinese-enable-youdao-dict t)
+     )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(sicp helm-projectile cal-china-x electric-spacing matlab-mode)
+   dotspacemacs-additional-packages '(sicp helm-projectile cal-china-x electric-spacing matlab-mode virtualenvwrapper)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages
@@ -178,8 +180,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(monokai
-                         spacemacs-light
+   dotspacemacs-themes '(leuven
+                         monokai
+                         spacemacs-dark
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -462,6 +465,26 @@ values."
   (add-to-list 'load-path  "~/.emacs.img/")
   (require 'org-screenshot)
   (global-set-key (kbd "C-p") 'org-screenshot)
+
+  (require 'virtualenvwrapper)
+  (venv-initialize-interactive-shells) ;; if you want interactive shell support
+  (venv-initialize-eshell)             ;; if you want eshell support
+  ;; note that setting `venv-location` is not necessary if you
+  ;; use the default location (`~/.virtualenvs`), or if the
+  ;; the environment variable `WORKON_HOME` points to the right place
+  (setq venv-location "~/.virtualenvs")
+
+  ;; setup matlab in babel
+  (setq org-babel-default-header-args:matlab
+        '((:results . "output") (:session . "*MATLAB*")))
+
+  ;; list of babel languages
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((matlab . t)
+     ))
+
+
 
   )
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
