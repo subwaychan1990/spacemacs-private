@@ -72,7 +72,7 @@
   (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
   (with-eval-after-load 'org
     (progn
-      
+
       (spacemacs|disable-company org-mode)
       (spacemacs/set-leader-keys-for-major-mode 'org-mode
         "," 'org-priority)
@@ -139,52 +139,65 @@
                                   ;; keybinding for inserting code blocks
                                   (local-set-key (kbd "C-c i s")
                                                  'zilongshanren/org-insert-src-block)))
-      (require 'ox-publish)
+      (require 'ox-latex)
+
       (add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}
-                                        [NO-DEFAULT-PACKAGES]
-                                        \\usepackage[utf8]{inputenc}
-                                        \\usepackage[T1]{fontenc}
-                                        \\usepackage{fixltx2e}
-                                        \\usepackage{graphicx}
-                                        \\usepackage{longtable}
-                                        \\usepackage{float}
-                                        \\usepackage{wrapfig}
-                                        \\usepackage{rotating}
-                                        \\usepackage[normalem]{ulem}
-                                        \\usepackage{amsmath}
-                                        \\usepackage{textcomp}
-                                        \\usepackage{marvosym}
-                                        \\usepackage{wasysym}
-                                        \\usepackage{amssymb}
-                                        \\usepackage{booktabs}
-                                        \\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=black]{hyperref}
-                                        \\tolerance=1000
-                                        \\usepackage{listings}
-                                        \\usepackage{xcolor}
-                                        \\lstset{
-                                        %行号
-                                        numbers=left,
-                                        %背景框
-                                        framexleftmargin=10mm,
-                                        frame=none,
-                                        %背景色
-                                        %backgroundcolor=\\color[rgb]{1,1,0.76},
-                                        backgroundcolor=\\color[RGB]{245,245,244},
-                                        %样式
-                                        keywordstyle=\\bf\\color{blue},
-                                        identifierstyle=\\bf,
-                                        numberstyle=\\color[RGB]{0,192,192},
-                                        commentstyle=\\it\\color[RGB]{0,96,96},
-                                        stringstyle=\\rmfamily\\slshape\\color[RGB]{128,0,0},
-                                        %显示空格
-                                        showstringspaces=false
-                                        }
-                                        "
+[NO-DEFAULT-PACKAGES]
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{fixltx2e}
+\\usepackage{graphicx}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{wrapfig}
+\\usepackage{rotating}
+\\usepackage[normalem]{ulem}
+\\usepackage{amsmath}
+\\usepackage{textcomp}
+\\usepackage{marvosym}
+\\usepackage{wasysym}
+\\usepackage{amssymb}
+\\usepackage{booktabs}
+\\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=black]{hyperref}
+\\tolerance=1000
+\\usepackage{listings}
+\\usepackage{xcolor}
+\\usepackage{minted}
+\\usepackage{algorithm}
+\\newtheorem{theorem}{Theorem}[section]
+\\newenvironment{proof}{{\\noindent\\it Proof}\\quad}{\\hfill $\\square$\\par}
+\\usepackage{algpseudocode}
+\\renewcommand\\thefigure{\\thesection.\\arabic{figure}}
+\\makeatletter
+\\@addtoreset{figure}{section}
+\\makeatother
+\\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\\lstset{
+%行号
+numbers=left,
+%背景框
+framexleftmargin=10mm,
+frame=none,
+%背景色
+%backgroundcolor=\\color[rgb]{1,1,0.76},
+backgroundcolor=\\color[RGB]{245,245,244},
+%样式
+keywordstyle=\\color{blue},
+identifierstyle=\\bf,
+numberstyle=\\color{brick},
+commentstyle=\\it\\color[RGB]{0,96,96},
+stringstyle=\\rmfamily\\slshape\\color[RGB]{128,0,0},
+%显示空格
+showstringspaces=false
+captionpos=t
+}
+"
                                         ("\\section{%s}" . "\\section*{%s}")
                                         ("\\subsection{%s}" . "\\subsection*{%s}")
                                         ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                                         ("\\paragraph{%s}" . "\\paragraph*{%s}")
                                         ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
 
       ;; {{ export org-mode in Chinese into PDF
       ;; @see http://freizl.github.io/posts/tech/2012-04-06-export-orgmode-file-in-Chinese.html
@@ -193,6 +206,7 @@
       ;;    `sudo USE="cjk" emerge texlive-xetex` on Gentoo Linux
       ;; }}
       (setq org-latex-default-class "ctexart")
+
       (setq org-latex-pdf-process
             '(
               "xelatex -interaction nonstopmode -output-directory %o %f"
@@ -201,6 +215,17 @@
               "rm -fr %b.out %b.log %b.tex auto"))
 
       (setq org-latex-listings t)
+
+      (setq org-latex-listings 'minted
+            org-latex-packages-alist '(("" "minted"))
+            org-latex-pdf-process
+            '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+              "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+              "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+              "rm -fr %b.out %b.log %b.tex auto"))
+      (setq org-latex-minted-options
+            '(("bgcolor=bg")))
+      ;; (setq org-confirm-babel-evaluate nil)
 
       ;;reset subtask
       (setq org-default-properties (cons "RESET_SUBTASKS" org-default-properties))
@@ -251,7 +276,12 @@ unwanted space when exporting org-mode to html."
       (setq org-agenda-file-journal (expand-file-name "journal.org" org-agenda-dir))
       (setq org-agenda-file-code-snippet (expand-file-name "snippet.org" org-agenda-dir))
       (setq org-default-notes-file (expand-file-name "gtd.org" org-agenda-dir))
-      (setq org-agenda-files (list org-agenda-dir))
+      ;; add files recursively to my list of agenda files?
+      ;; https://orgmode.org/worg/org-faq.html
+      ;; Can I add files recursively to my list of agenda files?
+      (load-library "find-lisp")
+      (setq org-agenda-files (find-lisp-find-files "~/org-notes" "\.org$"))
+      ;; (setq org-agenda-files (list org-agenda-dir))
 
       (with-eval-after-load 'org-agenda
         (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro)
@@ -314,7 +344,7 @@ unwanted space when exporting org-mode to html."
 </div>")
       (defvar zilongshanren-website-html-blog-head
         " <link rel='stylesheet' href='css/site.css' type='text/css'/> \n
-    <link rel=\"stylesheet\" type=\"text/css\" href=\"/css/worg.css\"/>")
+<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/worg.css\"/>")
       (setq org-publish-project-alist
             `(
               ("blog-notes"

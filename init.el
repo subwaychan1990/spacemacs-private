@@ -63,7 +63,7 @@ values."
      (gtags :disabled-for clojure emacs-lisp javascript latex python shell-scripts)
      (shell :variables shell-default-shell 'eshell)
      ;; docker
-     latex
+     (latex :variables latex-build-command "XeLaTeX")
      ;;搜索你的配置
      deft
      markdown
@@ -98,7 +98,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(sicp helm-projectile cal-china-x electric-spacing matlab-mode virtualenvwrapper)
+   dotspacemacs-additional-packages '(sicp helm-projectile cal-china-x electric-spacing matlab-mode virtualenvwrapper py-autopep8)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages
@@ -461,6 +461,9 @@ values."
             )
   (server-start)
 
+
+
+
   (add-hook 'org-mode-hook 'iimage-mode) ; enable iimage-mode
   (add-to-list 'load-path  "~/.emacs.img/")
   (require 'org-screenshot)
@@ -484,7 +487,7 @@ values."
    '((matlab . t)
      ))
 
-
+  (setq org-image-actual-width nil)
 
   )
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
