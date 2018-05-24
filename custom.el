@@ -25,7 +25,7 @@
  '(expand-region-contract-fast-key "V")
  '(expand-region-exclude-text-mode-expansions (quote (html-mode nxml-mode web-mode)))
  '(expand-region-reset-fast-key "r")
- '(fci-rule-color "#3C3D37")
+ '(fci-rule-color "#3C3D37" t)
  '(global-command-log-mode nil)
  '(helm-buffer-max-length 56)
  '(helm-move-to-line-cycle-in-source t)
@@ -58,7 +58,7 @@
  '(org-agenda-text-search-extra-files (quote (agenda-archives)))
  '(org-deadline-warning-days 14)
  '(org-fast-tag-selection-single-key (quote expert))
- '(org-image-actual-width 3)
+ '(org-image-actual-width (quote (600)))
  '(org-log-into-drawer t)
  '(org-pomodoro-play-sounds nil)
  '(org-reverse-note-order t)
@@ -99,10 +99,10 @@
      ("A" "#+ASCII: ")
      ("i" "#+INDEX: ?")
      ("I" "#+INCLUDE: %file ?")
-     ("ps" "#+BEGIN_SRC python :results output :session src:1?
+     ("ps" "#+BEGIN_SRC python :results silent :session src:?
 
 #+END_SRC")
-     ("po" "#+BEGIN_SRC python :exports both :results output :session src:1?
+     ("po" "#+BEGIN_SRC python :exports both :results output :session src:?
 
 #+END_SRC"))))
  '(org-support-shift-select t)
