@@ -168,9 +168,12 @@
 \\newenvironment{proof}{{\\noindent\\it Proof}\\quad}{\\hfill $\\square$\\par}
 \\usepackage{algpseudocode}
 \\renewcommand\\thefigure{\\thesection.\\arabic{figure}}
+\\renewcommand\\thelisting{\\thesection.\\arabic{listing}}
 \\makeatletter
 \\@addtoreset{figure}{section}
+\\@addtoreset{listing}{section}
 \\makeatother
+\\usemintedstyle{manni}
 \\definecolor{bg}{rgb}{0.95,0.95,0.95}
 \\lstset{
 %行号
@@ -226,7 +229,7 @@ captionpos=t
       (setq org-latex-minted-options
             '(("bgcolor=bg")))
       ;; (setq org-confirm-babel-evaluate nil)
-
+      (setq org-export-use-babel nil)
       ;;reset subtask
       (setq org-default-properties (cons "RESET_SUBTASKS" org-default-properties))
 
