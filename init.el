@@ -487,7 +487,7 @@ values."
    '((matlab . t)
      ))
 
-  (setq org-image-actual-width nil)
+  (setq org-image-actual-width 600)
 
   )
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))

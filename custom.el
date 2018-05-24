@@ -25,7 +25,7 @@
  '(expand-region-contract-fast-key "V")
  '(expand-region-exclude-text-mode-expansions (quote (html-mode nxml-mode web-mode)))
  '(expand-region-reset-fast-key "r")
- '(fci-rule-color "#3C3D37" t)
+ '(fci-rule-color "#3C3D37")
  '(global-command-log-mode nil)
  '(helm-buffer-max-length 56)
  '(helm-move-to-line-cycle-in-source t)
