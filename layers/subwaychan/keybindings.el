@@ -2,3 +2,6 @@
 (spacemacs/set-leader-keys "ols" 'subwaychan/save-my-layout)
 (global-set-key (kbd "M-s i") 'iedit-mode)
 (global-set-key (kbd "M-s e") 'electric-spacing-mode)
+(global-set-key (kbd "M-s l") 'org-ref-helm-insert-label-link)
+(global-set-key (kbd "M-s r") 'org-ref-helm-insert-ref-link)
+(global-set-key (kbd "<s-return>") 'yas-expand)

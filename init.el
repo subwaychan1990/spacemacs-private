@@ -93,12 +93,13 @@ values."
      (chinese :packages youdao-dictionary fcitx
               :variables chinese-enable-fcitx nil
               chinese-enable-youdao-dict t)
+     bibtex
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(sicp helm-projectile cal-china-x electric-spacing matlab-mode virtualenvwrapper py-autopep8)
+   dotspacemacs-additional-packages '(sicp helm-projectile cal-china-x electric-spacing matlab-mode virtualenvwrapper py-autopep8 org-attach-screenshot)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages
@@ -114,7 +115,7 @@ values."
                     clang-format define-word google-translate disaster epic
                     fancy-battery org-present orgit orglue spacemacs-theme
                     helm-flyspell flyspell-correct-helm clean-aindent-mode
-                    helm-c-yasnippet ace-jump-helm-line helm-make magithub
+                    elm-c-yasnippet ace-jump-helm-line helm-make magithub
                     helm-themes helm-swoop helm-spacemacs-help smeargle
                     ido-vertical-mode flx-ido company-quickhelp counsel-projectile
                     window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
@@ -462,12 +463,8 @@ values."
   (server-start)
 
 
+  (require 'org-attach-screenshot)
 
-
-  (add-hook 'org-mode-hook 'iimage-mode) ; enable iimage-mode
-  (add-to-list 'load-path  "~/.emacs.img/")
-  (require 'org-screenshot)
-  (global-set-key (kbd "C-p") 'org-screenshot)
 
   (require 'virtualenvwrapper)
   (venv-initialize-interactive-shells) ;; if you want interactive shell support
@@ -487,7 +484,37 @@ values."
    '((matlab . t)
      ))
 
-  (setq org-image-actual-width 600)
+  (setq org-image-actual-width 400)
+
+  ;; add pylookup to your loadpath, ex) ~/.emacs.d/pylookup
+  (setq pylookup-dir "~/.emacs.d/layers/+lang/python/local/pylookup")
+  (add-to-list 'load-path pylookup-dir)
+
+  ;; load pylookup when compile time
+  (eval-when-compile (require 'pylookup))
+
+  ;; set executable file and db file
+  (setq pylookup-program (concat pylookup-dir "/pylookup.py"))
+  (setq pylookup-db-file (concat pylookup-dir "/pylookup.db"))
+
+  ;; set search option if you want
+  ;; (setq pylookup-search-options '("--insensitive" "0" "--desc" "0"))
+
+  ;; to speedup, just load it on demand
+  (autoload 'pylookup-lookup "pylookup"
+    "Lookup SEARCH-TERM in the Python HTML indexes." t)
+
+  (autoload 'pylookup-update "pylookup"
+    "Run pylookup-update and create the database at `pylookup-db-file'." t)
+
+  (setq org-ref-default-bibliography '("~/Papers/references.bib")
+        org-ref-pdf-directory "~/Papers/"
+        org-ref-bibliography-notes "~/Papers/notes.org")
+
+  (setq python-shell-interpreter-args "-i")
+
+
+
 
   )
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))

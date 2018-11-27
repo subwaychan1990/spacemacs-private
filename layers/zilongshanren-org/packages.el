@@ -157,21 +157,29 @@
 \\usepackage{marvosym}
 \\usepackage{wasysym}
 \\usepackage{amssymb}
+\\usepackage{mathrsfs}
 \\usepackage{booktabs}
 \\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=black]{hyperref}
 \\tolerance=1000
 \\usepackage{listings}
 \\usepackage{xcolor}
 \\usepackage{minted}
+\\numberwithin{equation}{section}
 \\usepackage{algorithm}
-\\newtheorem{theorem}{Theorem}[section]
+\\newtheorem{theorem}{定理}[section]
+\\newtheorem{note}{注}
+\\newtheorem{example}{例}[section]
+\\newtheorem{lemma}{引理}[section]
 \\newenvironment{proof}{{\\noindent\\it Proof}\\quad}{\\hfill $\\square$\\par}
 \\usepackage{algpseudocode}
 \\renewcommand\\thefigure{\\thesection.\\arabic{figure}}
 \\renewcommand\\thelisting{\\thesection.\\arabic{listing}}
+\\renewcommand\\thetable{\\thesection.\\arabic{table}}
 \\makeatletter
 \\@addtoreset{figure}{section}
 \\@addtoreset{listing}{section}
+\\@addtoreset{table}{section}
+\\@addtoreset{footnote}{section}
 \\makeatother
 \\usemintedstyle{manni}
 \\definecolor{bg}{rgb}{0.95,0.95,0.95}
@@ -213,7 +221,9 @@ captionpos=t
       (setq org-latex-pdf-process
             '(
               "xelatex -interaction nonstopmode -output-directory %o %f"
+              "latexmk -shell-escape -bibtex -f -pdf %f"
               "xelatex -interaction nonstopmode -output-directory %o %f"
+              "latexmk -shell-escape -bibtex -f -pdf %f"
               "xelatex -interaction nonstopmode -output-directory %o %f"
               "rm -fr %b.out %b.log %b.tex auto"))
 
@@ -227,7 +237,7 @@ captionpos=t
               "xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"
               "rm -fr %b.out %b.log %b.tex auto"))
       (setq org-latex-minted-options
-            '(("bgcolor=bg")))
+            '(("bgcolor=bg") ("fontsize=\\footnotesize")))
       ;; (setq org-confirm-babel-evaluate nil)
       (setq org-export-use-babel nil)
       ;;reset subtask
