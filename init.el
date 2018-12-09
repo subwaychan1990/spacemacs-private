@@ -512,6 +512,7 @@ values."
         org-ref-bibliography-notes "~/Papers/notes.org")
 
   (setq python-shell-interpreter-args "-i")
+  (setq evil-insert-state-cursor '("#ff00ff" box))
 
 
 

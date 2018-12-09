@@ -259,7 +259,7 @@ captionpos=t
  '(ivy-virtual ((t (:background "skyblue"))))
  '(js2-external-variable ((t (:foreground "plum3"))))
  '(mc/cursor-bar-face ((t (:background "chartreuse3"))))
- '(region ((t (:inherit highlight :background "dodger blue"))))
+ '(region ((t (:inherit highlight :background "pale green"))))
  '(show-paren-match ((t (:background "dark gray" :foreground "#d33682" :weight bold))))
  '(sp-show-pair-match-face ((t (:background "#272822" :foreground "gray" :inverse-video t :weight normal))))
  '(web-mode-current-element-highlight-face ((t (:background "dark gray")))))
